@@ -8,6 +8,7 @@ import {
   Dimensions,
   StyleSheet,
   Platform,
+  StatusBar,
 } from 'react-native';
 import {SelectUser} from '../../assets/images';
 import styles from './styles';
@@ -79,6 +80,11 @@ const OnboardingScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        translucent={false}
+        backgroundColor={colors.white}
+        barStyle={'dark-content'}
+      />
       <View style={{paddingTop: Platform.OS === 'ios' ? insets.top : 0}} />
 
       <ScrollView

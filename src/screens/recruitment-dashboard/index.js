@@ -1,5 +1,12 @@
 import React from 'react';
-import {Platform, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Platform,
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import BackHeader from '../../components/atoms/headers/back-header';
 import PrimaryButton from '../../components/carts/button';
 import styles from './styles';
@@ -11,6 +18,11 @@ const RecruitmentDashboard = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        translucent={false}
+        backgroundColor={colors.primary}
+        barStyle={'light-content'}
+      />
       <View
         style={{
           paddingTop: Platform.OS === 'ios' ? insets.top : 0,
