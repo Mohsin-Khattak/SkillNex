@@ -60,6 +60,7 @@ const ForgotPassword = ({navigation}) => {
               onBlur={handleBlur('email')}
               error={touched.email && errors.email}
             />
+            
 
             <Text
               style={{

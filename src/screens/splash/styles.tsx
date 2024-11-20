@@ -6,10 +6,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   lottie: {
-    width: 200,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    height: 200,
+    width: 100,
+    height: 100,
   },
 });
 export default styles;
