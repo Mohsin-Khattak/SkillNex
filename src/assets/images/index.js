@@ -1,0 +1,12 @@
+export {default as car} from './drawer/car.png';
+export {default as globe} from './drawer/globe.png';
+export {default as hands} from './drawer/hands.png';
+export {default as home} from './drawer/home.png';
+export {default as location} from './drawer/location.png';
+export {default as open_mail} from './drawer/open_mail.png';
+export {default as question_mark} from './drawer/question_mark.png';
+export {default as country_flag} from './drawer/countryFlag.png';
+export {default as flag} from './drawer/flag.png';
+export {default as SelectUser} from './drawer/select-user.png';
+export {default as Profile} from './drawer/profile.png';
+export {default as CompanyLogo} from './drawer/companyLogo.png';
