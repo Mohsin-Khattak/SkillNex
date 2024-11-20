@@ -12,7 +12,7 @@ import {ThreeDot} from '../../assets/icons/lottie';
 const Splash = ({navigation}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('OnboardingScreen');
+      // navigation.replace('OnboardingScreen');
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -30,7 +30,9 @@ const Splash = ({navigation}) => {
         style={{marginTop: mvs(100), marginBottom: mvs(100)}}
       />
       {/* <LoaderSvg /> */}
+  
       <LottieView source={ThreeDot} autoPlay loop style={styles.lottie} />
+
     </GradientBackground>
   );
 };

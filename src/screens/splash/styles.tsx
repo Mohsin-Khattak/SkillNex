@@ -7,6 +7,8 @@ const styles = StyleSheet.create({
   },
   lottie: {
     width: 200,
+    backgroundColor: 'red',
+    alignItems: 'center',
     height: 200,
   },
 });
