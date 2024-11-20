@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import {LogoSvg} from '../../assets/icons/user';
 import PrimaryButton from '../../components/carts/button';
 import {colors} from '../../config/colors';
@@ -9,6 +9,11 @@ import styles from './styles';
 const SignUpOrLogin = ({navigation}) => {
   return (
     <View style={styles.container}>
+      <StatusBar
+        translucent={false}
+        backgroundColor={colors.white}
+        barStyle={'dark-content'}
+      />
       <LogoSvg color={colors.primary} />
 
       <Regular

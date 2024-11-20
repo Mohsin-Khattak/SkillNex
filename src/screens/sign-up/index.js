@@ -1,6 +1,6 @@
 import {Formik} from 'formik';
 import React, {useState} from 'react';
-import {Platform, Text, View} from 'react-native';
+import {Platform, StatusBar, Text, View} from 'react-native';
 import * as Yup from 'yup';
 import {
   CurrentJobIconSvg,
@@ -44,6 +44,11 @@ const SignUp = ({navigation}) => {
 
   return (
     <KeyboardAvoidScrollview>
+      <StatusBar
+        translucent={false}
+        backgroundColor={colors.white}
+        barStyle={'dark-content'}
+      />
       <View
         style={{
           paddingTop: Platform.OS === 'ios' ? insets.top : 0,

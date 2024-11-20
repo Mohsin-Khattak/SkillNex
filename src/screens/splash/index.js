@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import {LoaderSvg, LogoSvg} from '../../assets/icons/user';
 import GradientBackground from '../../components/atoms/linear-gradient';
 import {colors} from '../../config/colors';
@@ -22,6 +22,11 @@ const Splash = ({navigation}) => {
     <GradientBackground
       colors={['#00A4CC', '#0047AB']}
       style={styles.container}>
+      <StatusBar
+        translucent={false}
+        backgroundColor={colors.secondary}
+        barStyle={'light-content'}
+      />
       <View style={{marginTop: mvs(180)}} />
       <LogoSvg color={colors.white} />
       <Light

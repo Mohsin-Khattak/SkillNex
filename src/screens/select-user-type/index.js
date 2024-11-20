@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View} from 'react-native';
+import {Image, StatusBar, View} from 'react-native';
 import {SelectUser} from '../../assets/images';
 import GradientBackground from '../../components/atoms/linear-gradient';
 import PrimaryButton from '../../components/carts/button';
@@ -10,6 +10,11 @@ import styles from './styles';
 const SelectUserType = ({navigation}) => {
   return (
     <View style={styles.container}>
+      <StatusBar
+        translucent={false}
+        backgroundColor={colors.secondary}
+        barStyle={'light-content'}
+      />
       <GradientBackground
         colors={['#00A4CC', '#0047AB']}
         style={styles.gradientContainer}>

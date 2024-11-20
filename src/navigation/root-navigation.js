@@ -26,7 +26,7 @@ export const RootNavigator = () => {
       {/* <SafeAreaView style={{flex: 0, backgroundColor: colors.primary}} /> */}
       {/* <StatusBar
         translucent={false}
-        backgroundColor={colors.black}
+        backgroundColor={colors.primary}
         barStyle={'light-content'}
       /> */}
       <Stack.Navigator
