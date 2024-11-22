@@ -11,7 +11,9 @@ import {colors} from '../../config/colors';
 import Bold from '../../typography/bold-text';
 import Regular from '../../typography/regular-text';
 import styles from './styles';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 const JobPostScreen = () => {
+  const insets = useSafeAreaInsets();
   const [checkedItems, setCheckedItems] = useState({
     technicalSkills: false,
     certification: false,
@@ -27,6 +29,12 @@ const JobPostScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View
+        style={{
+          paddingTop: Platform.OS === 'ios' ? insets.top : 0,
+          backgroundColor: colors.primary,
+        }}
+      />
       <BackHeader name="Sadruddin" date="Today Jan 27" />
       <KeyboardAvoidScrollview>
         <Row>
@@ -100,6 +108,7 @@ const JobPostScreen = () => {
         <PrimaryButton label="Publish" textStyle={styles.buttonText} />
       </KeyboardAvoidScrollview>
     </View>
+
   );
 };
 
