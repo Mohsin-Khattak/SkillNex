@@ -16,6 +16,9 @@ import RecruiterProfile from '../screens/recruiter-profile';
 import JobPostScreen from '../screens/iob-post-screen';
 import TotalJobPost from '../screens/total-job-post';
 import JobBoard from '../screens/job-board';
+import CandidateDashboard from '../screens/candidates-screens/candidate-dashboard';
+import CandidateEditProfile from '../screens/candidates-screens/candidate-editprofile';
+import CandidateJobBoard from '../screens/candidates-screens/candidate-jobboard';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +33,7 @@ export const RootNavigator = () => {
         barStyle={'light-content'}
       /> */}
       <Stack.Navigator
-        initialRouteName="Splash"
+        initialRouteName="CandidateJobBoard"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />
@@ -51,6 +54,15 @@ export const RootNavigator = () => {
         <Stack.Screen name="TotalJobPost" component={TotalJobPost} />
         <Stack.Screen name="JobBoard" component={JobBoard} />
         <Stack.Screen name="SignUpOrLogin" component={SignUpOrLogin} />
+        <Stack.Screen
+          name="CandidateDashboard"
+          component={CandidateDashboard}
+        />
+        <Stack.Screen
+          name="CandidateEditProfile"
+          component={CandidateEditProfile}
+        />
+        <Stack.Screen name="CandidateJobBoard" component={CandidateJobBoard} />
       </Stack.Navigator>
     </View>
   );

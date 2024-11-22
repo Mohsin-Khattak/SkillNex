@@ -10,3 +10,6 @@ export {default as flag} from './drawer/flag.png';
 export {default as SelectUser} from './drawer/select-user.png';
 export {default as Profile} from './drawer/profile.png';
 export {default as CompanyLogo} from './drawer/companyLogo.png';
+export {default as StartTime} from './drawer/starttime.png';
+export {default as CheckCircle} from './drawer/checkcircle.png';
+export {default as GoogleCard} from './drawer/googlecard.png';
