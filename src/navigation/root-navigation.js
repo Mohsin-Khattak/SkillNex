@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+import AIAnalyzer from '../screens/ai-analyzer';
 import CandidateDashboard from '../screens/candidates-screens/candidate-dashboard';
 import CandidateEditProfile from '../screens/candidates-screens/candidate-editprofile';
 import CandidateJobDescription from '../screens/candidates-screens/candidate-job-description';
 import CandidateJobBoard from '../screens/candidates-screens/candidate-jobboard';
 import MettingScreen from '../screens/candidates-screens/meeting-screen';
-import AIAnalyzer from '../screens/ai-analyzer';
 import FeedbackReportCandidate from '../screens/feedback-report-candidate';
 import FeedbackReportRecruiter from '../screens/feedback-report-recruiter';
 import ForgotPassword from '../screens/forgot-password';
@@ -27,12 +27,10 @@ import TotalJobPost from '../screens/total-job-post';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
-
   return (
     <View style={styles.container}>
-
       <Stack.Navigator
-        initialRouteName="AIAnalyzer"
+        initialRouteName="Splash"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />
@@ -63,16 +61,22 @@ export const RootNavigator = () => {
         />
         <Stack.Screen name="CandidateJobBoard" component={CandidateJobBoard} />
         <Stack.Screen name="JobSubmission" component={JobSubmission} />
-        <Stack.Screen name="FeedbackReportRecruiter" component={FeedbackReportRecruiter} />
-        <Stack.Screen name="FeedbackReportCandidate" component={FeedbackReportCandidate} />
+        <Stack.Screen
+          name="FeedbackReportRecruiter"
+          component={FeedbackReportRecruiter}
+        />
+        <Stack.Screen
+          name="FeedbackReportCandidate"
+          component={FeedbackReportCandidate}
+        />
         <Stack.Screen name="AIAnalyzer" component={AIAnalyzer} />
         <Stack.Screen
           name="CandidateJobDescription"
           component={CandidateJobDescription}
         />
         <Stack.Screen name="MettingScreen" component={MettingScreen} />
-      </Stack.Navigator >
-    </View >
+      </Stack.Navigator>
+    </View>
   );
 };
 

@@ -12,6 +12,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Regular from '../../../typography/regular-text';
 import PrimaryButton from '../../carts/button';
+import {navigate} from '../../../navigation/navigation-ref';
 
 const FeedbackReportModal = ({
   style,
@@ -116,7 +117,7 @@ const FeedbackReportModal = ({
           </View>
         </View>
         <PrimaryButton
-          onPress={onPress}
+          onclick={() => navigate('FeedbackReportRecruiter')}
           style={{marginHorizontal: mvs(20), marginTop: mvs(29)}}
           label="View Feedback Report"
         />

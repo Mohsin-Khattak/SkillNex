@@ -9,7 +9,8 @@ import Regular from '../../../typography/regular-text';
 import {colors} from '../../../config/colors';
 import {CheckCircle, GoogleCard} from '../../../assets/images';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-const JobBoardCard = ({item, style, onPress}) => {
+import {navigate} from '../../../navigation/navigation-ref';
+const JobBoardCard = ({item, style, onPress, ...props}) => {
   return (
     <View style={{...styles.container}}>
       <Row style={{alignItems: 'center'}}>
@@ -43,6 +44,7 @@ const JobBoardCard = ({item, style, onPress}) => {
         </View>
 
         <PrimaryButton
+          onclick={() => navigate('CandidateJobDescription')}
           textStyle={styles.applyTextStyle}
           width={75}
           height={35}

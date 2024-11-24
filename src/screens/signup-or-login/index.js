@@ -5,8 +5,11 @@ import PrimaryButton from '../../components/carts/button';
 import {colors} from '../../config/colors';
 import Regular from '../../typography/regular-text';
 import styles from './styles';
+import {navigate} from '../../navigation/navigation-ref';
 
-const SignUpOrLogin = ({navigation}) => {
+const SignUpOrLogin = props => {
+  const userType = props?.route?.params?.userType;
+  console.log(userType);
   return (
     <View style={styles.container}>
       <StatusBar
@@ -24,7 +27,7 @@ const SignUpOrLogin = ({navigation}) => {
       />
       <View style={{width: '100%'}}>
         <PrimaryButton
-          onclick={() => navigation.replace('SignIn')}
+          onclick={() => navigate('SignIn', {userType: userType})}
           label="Log In"
           height={56}
           style={styles.loginBtn}

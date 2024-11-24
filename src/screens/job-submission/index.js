@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
-import {
-  Alert,
-  Platform,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
-import { pick, types } from 'react-native-document-picker';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { UploadIconSvg } from '../../assets/icons/user';
+import React, {useState} from 'react';
+import {Alert, Platform, Text, TouchableOpacity, View} from 'react-native';
+import {pick, types} from 'react-native-document-picker';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {UploadIconSvg} from '../../assets/icons/user';
 import BackHeader from '../../components/atoms/headers/back-header';
-import { DropdownInput } from '../../components/atoms/input';
-import { KeyboardAvoidScrollview } from '../../components/atoms/keyboard-avoid-scrollview';
+import {DropdownInput} from '../../components/atoms/input';
+import {KeyboardAvoidScrollview} from '../../components/atoms/keyboard-avoid-scrollview';
 import PrimaryButton from '../../components/carts/button';
 import CustomTextInput from '../../components/carts/customTextInput';
-import { colors } from '../../config/colors';
+import {colors} from '../../config/colors';
 import styles from './styles';
+import {navigate} from '../../navigation/navigation-ref';
 
 const JobSubmission = () => {
   const [fileName, setFileName] = useState('');
-  console.log("test logs");
+  console.log('test logs');
 
   const handleFileUpload = () => {
     pick({
@@ -55,12 +50,12 @@ const JobSubmission = () => {
     jobTitle: '',
     jobDescription: '',
     language: '',
-  }
+  };
 
   const interviewTypes = [
-    { id: '1', title: 'React Native' },
-    { id: '2', title: 'React Js' },
-  ]
+    {id: '1', title: 'React Native'},
+    {id: '2', title: 'React Js'},
+  ];
   const [interviewType, setInterviewType] = useState({
     value: '',
     blur: false,
@@ -79,9 +74,9 @@ const JobSubmission = () => {
     errorMessage: 'Job description is required',
   });
   const languages = [
-    { id: '1', title: 'English' },
-    { id: '1', title: 'Urdu' },
-  ]
+    {id: '1', title: 'English'},
+    {id: '1', title: 'Urdu'},
+  ];
   const [language, setLanguage] = useState({
     value: '',
     blur: false,
@@ -89,7 +84,7 @@ const JobSubmission = () => {
   });
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <View
         style={{
           paddingTop: Platform.OS === 'ios' ? insets.top : 0,
@@ -97,8 +92,7 @@ const JobSubmission = () => {
         }}
       />
       <BackHeader name="Sadruddin" date="Today   Jan 27" />
-      <KeyboardAvoidScrollview contentContainerStyle={{ paddingHorizontal: 0 }}>
-
+      <KeyboardAvoidScrollview contentContainerStyle={{paddingHorizontal: 0}}>
         <View style={styles.container}>
           <View style={styles.contentContainer}>
             <View style={styles.headerRow}>
@@ -106,14 +100,22 @@ const JobSubmission = () => {
             </View>
             <DropdownInput
               onBlur={() => {
-                setInterviewType({ ...interviewType, blur: true })
+                setInterviewType({...interviewType, blur: true});
               }}
-              onChangeText={(id) => setInterviewType({ ...interviewType, value: id })}
-              label='Interview Type'
-              placeholder='Interview Type'
+              onChangeText={id =>
+                setInterviewType({...interviewType, value: id})
+              }
+              label="Interview Type"
+              placeholder="Interview Type"
               items={interviewTypes}
-              value={interviewTypes.find(x => x.id == interviewType.value)?.title}
-              error={interviewType.blur && !interviewType.value ? interviewType.errorMessage : ''}
+              value={
+                interviewTypes.find(x => x.id == interviewType.value)?.title
+              }
+              error={
+                interviewType.blur && !interviewType.value
+                  ? interviewType.errorMessage
+                  : ''
+              }
             />
 
             <View style={styles.inputContainer}>
@@ -123,8 +125,8 @@ const JobSubmission = () => {
                 style={styles.input}
                 placeholder={'UI/UX Designing'}
                 placeholderTextColor={colors.grey}
-                onChangeText={(text) => setJobTitle({ ...jobTitle, value: text })}
-                onBlur={() => setJobTitle({ ...jobTitle, blur: true })}
+                onChangeText={text => setJobTitle({...jobTitle, value: text})}
+                onBlur={() => setJobTitle({...jobTitle, blur: true})}
                 value={jobTitle.value}
               />
               {jobTitle.blur && !jobTitle.value && (
@@ -139,25 +141,33 @@ const JobSubmission = () => {
                 style={styles.input}
                 placeholder={'Job Description'}
                 placeholderTextColor={colors.grey}
-                onChangeText={(text) => setJobDescription({ ...jobDescription, value: text })}
-                onBlur={() => setJobDescription({ ...jobDescription, blur: true })}
+                onChangeText={text =>
+                  setJobDescription({...jobDescription, value: text})
+                }
+                onBlur={() =>
+                  setJobDescription({...jobDescription, blur: true})
+                }
                 value={jobDescription.value}
               />
               {jobDescription.blur && !jobDescription.value && (
-                <Text style={styles.errorText}>{jobDescription.errorMessage}</Text>
+                <Text style={styles.errorText}>
+                  {jobDescription.errorMessage}
+                </Text>
               )}
             </View>
 
             <DropdownInput
               onBlur={() => {
-                setLanguage({ ...language, blur: true })
+                setLanguage({...language, blur: true});
               }}
-              onChangeText={(id) => setLanguage({ ...language, value: id })}
-              label='Language'
-              placeholder='Language'
+              onChangeText={id => setLanguage({...language, value: id})}
+              label="Language"
+              placeholder="Language"
               items={languages}
               value={languages.find(x => x.id == language.value)?.title}
-              error={language.blur && !language.value ? language.errorMessage : ''}
+              error={
+                language.blur && !language.value ? language.errorMessage : ''
+              }
             />
 
             <View style={styles.inputContainer}>
@@ -173,7 +183,7 @@ const JobSubmission = () => {
               </TouchableOpacity>
             </View>
             <PrimaryButton
-              // onPress={handleSubmit}
+              onclick={() => navigate('MettingScreen')}
               label="Submit"
               style={styles.submitButton}
               textStyle={styles.submitButtonText}
