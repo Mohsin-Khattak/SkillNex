@@ -3,7 +3,10 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import CandidateDashboard from '../screens/candidates-screens/candidate-dashboard';
 import CandidateEditProfile from '../screens/candidates-screens/candidate-editprofile';
+import CandidateJobDescription from '../screens/candidates-screens/candidate-job-description';
 import CandidateJobBoard from '../screens/candidates-screens/candidate-jobboard';
+import MettingScreen from '../screens/candidates-screens/meeting-screen';
+import FeedbackAnalysis from '../screens/feedback-analysis';
 import FeedbackReportCandidate from '../screens/feedback-report-candidate';
 import FeedbackReportRecruiter from '../screens/feedback-report-recruiter';
 import ForgotPassword from '../screens/forgot-password';
@@ -20,18 +23,17 @@ import SignUp from '../screens/sign-up';
 import SignUpOrLogin from '../screens/signup-or-login';
 import Splash from '../screens/splash';
 import TotalJobPost from '../screens/total-job-post';
-import FeedbackAnalysis from '../screens/feedback-analysis';
 
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
-  
+
   return (
     <View style={styles.container}>
-    
+
       <Stack.Navigator
         initialRouteName="FeedbackReportCandidate"
-        screenOptions={{headerShown: false}}>
+        screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
@@ -64,11 +66,16 @@ export const RootNavigator = () => {
         <Stack.Screen name="FeedbackReportRecruiter" component={FeedbackReportRecruiter} />
         <Stack.Screen name="FeedbackReportCandidate" component={FeedbackReportCandidate} />
         <Stack.Screen name="FeedbackAnalysis" component={FeedbackAnalysis} />
-      </Stack.Navigator>
-    </View>
+        <Stack.Screen
+          name="CandidateJobDescription"
+          component={CandidateJobDescription}
+        />
+        <Stack.Screen name="MettingScreen" component={MettingScreen} />
+      </Stack.Navigator >
+    </View >
   );
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: { flex: 1 },
 });

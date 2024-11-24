@@ -37,7 +37,7 @@ const JobBoardCard = ({item, style, onPress}) => {
             </Row>
           </Row>
           <Row style={{justifyContent: 'flex-start', gap: mvs(5)}}>
-            <EvilIcons size={mvs(15)} name={'location'} color={colors.black} />
+            <EvilIcons size={mvs(12)} name={'location'} color={colors.black} />
             <Regular fontSize={12} label={'Lisbon, Portugal'} />
           </Row>
         </View>

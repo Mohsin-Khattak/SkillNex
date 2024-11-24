@@ -4,14 +4,13 @@ import Modal from 'react-native-modal'
 import { mvs } from '../../../config/metrices'
 import { colors } from '../../../config/colors'
 type props = {
-    style?: StyleProp<ViewStyle>
-    headerStyle?: StyleProp<ViewStyle>
-    children?: JSX.Element | JSX.Element[]
-    visible?: boolean
-    bar?: boolean
-    onBackdropPress?: (() => void) | undefined
-    onBackButtonPress?: (() => void) | undefined
-}
+  style?: StyleProp<ViewStyle>;
+  headerStyle?: StyleProp<ViewStyle>;
+  children?: JSX.Element | JSX.Element[];
+  visible?: boolean;
+  onBackdropPress?: (() => void) | undefined;
+  onBackButtonPress?: (() => void) | undefined;
+};
 export const ModalWrapper = (props: props) => {
     const {
         children,
@@ -39,8 +38,7 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   container: {
-    // borderRadius: mvs(15),
-    // padding: mvs(20),
+    borderRadius: mvs(15),
     backgroundColor: colors.white,
     alignSelf: 'center',
   },
