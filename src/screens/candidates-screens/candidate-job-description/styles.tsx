@@ -23,5 +23,22 @@ const styles = StyleSheet.create({
     borderColor: colors.primary,
     borderWidth: mvs(1),
   },
+  jobTitle: {
+    height: mvs(23),
+    width: mvs(4),
+    backgroundColor: colors.primary,
+    borderRadius: mvs(2),
+  },
+  verticalView: {
+    justifyContent: 'flex-start',
+    gap: 5,
+    marginHorizontal: mvs(20),
+    marginTop: mvs(28),
+  },
+  numberContainer: {
+    flexDirection: 'column',
+    paddingHorizontal: mvs(20),
+    marginTop: mvs(10),
+  },
 });
 export default styles;

@@ -10,7 +10,7 @@ import {mvs} from '../../../config/metrices';
 import Bold from '../../../typography/bold-text';
 import {Row} from '../../../components/atoms/row';
 import Medium from '../../../typography/medium-text';
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
 const CandidateJobBoard = props => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -94,7 +94,11 @@ const CandidateJobBoard = props => {
 
       <View style={styles.paginationControls}>
         <TouchableOpacity onPress={handlePrevious} disabled={currentPage === 1}>
-          <PrevIconSvg color={currentPage === 1 ? colors.grey : colors.black} />
+          <AntDesign
+            name={'verticleright'}
+            size={15}
+            color={currentPage === 1 ? colors.grey : colors.black}
+          />
         </TouchableOpacity>
         <Row>
           <View style={styles.numberContainer}>
@@ -109,7 +113,9 @@ const CandidateJobBoard = props => {
         <TouchableOpacity
           onPress={handleNext}
           disabled={currentPage === Math.ceil(allData.length / itemsPerPage)}>
-          <NextIconSvg
+          <AntDesign
+            size={15}
+            name="verticleleft"
             color={
               currentPage === Math.ceil(allData.length / itemsPerPage)
                 ? colors.grey

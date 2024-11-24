@@ -16,6 +16,7 @@ export const colors = {
   yellow: '#FEEF06',
   grey: '#676767',
   brown: '#4C5560',
+  halfWhite: '#B8B8D2',
 
   shadow: {
     shadowColor: '#000',

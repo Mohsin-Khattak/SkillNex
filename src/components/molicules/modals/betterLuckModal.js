@@ -1,11 +1,11 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {BetterLuckImage, CongratesImage} from '../../../assets/images';
 import {colors} from '../../../config/colors';
 import {mvs} from '../../../config/metrices';
 import {ModalWrapper} from '../../atoms/modal-wrapper';
-import {CongratesImage} from '../../../assets/images';
 
-const CongratulationModal = ({
+const BetterLuckModal = ({
   style,
   visible = false,
   onPress,
@@ -21,13 +21,13 @@ const CongratulationModal = ({
       <View style={styles.innerContainer}>
         <Image
           style={{width: '100%', height: 373, borderRadius: 10}}
-          source={CongratesImage}
+          source={BetterLuckImage}
         />
       </View>
     </ModalWrapper>
   );
 };
-export default CongratulationModal;
+export default BetterLuckModal;
 const styles = StyleSheet.create({
   contentContainerStyle: {
     width: '100%',

@@ -35,7 +35,7 @@ export const RootNavigator = () => {
         barStyle={'light-content'}
       /> */}
       <Stack.Navigator
-        initialRouteName="CandidateJobDescription"
+        initialRouteName="CandidateJobBoard"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />

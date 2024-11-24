@@ -20,4 +20,5 @@ export {default as MettingPic} from './drawer/meetingpic.png';
 export {default as Frontcamera} from './drawer/frontcamera.png';
 export {default as BottomBtns} from './drawer/bottombtns.png';
 export {default as CrossIcon} from './drawer/crossimage.png';
+export {default as BetterLuckImage} from './drawer/betterluck.png';
 export {default as CongratesImage} from './drawer/congratesimage.png';

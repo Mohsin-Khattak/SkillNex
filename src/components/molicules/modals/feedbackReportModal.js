@@ -17,7 +17,6 @@ const FeedbackReportModal = ({
   style,
   visible = false,
   onPress,
-  loading,
   onClose = item => {},
 }) => {
   const data = [
@@ -91,7 +90,7 @@ const FeedbackReportModal = ({
         </View>
         <View style={{paddingHorizontal: mvs(20), marginTop: mvs(20)}}>
           <Bold label="Job `Description" color={colors.brown} />
-          <Row
+          <View
             style={{
               flexDirection: 'column',
               gap: mvs(5),
@@ -114,9 +113,10 @@ const FeedbackReportModal = ({
                 />
               </Row>
             ))}
-          </Row>
+          </View>
         </View>
         <PrimaryButton
+          onPress={onPress}
           style={{marginHorizontal: mvs(20), marginTop: mvs(29)}}
           label="View Feedback Report"
         />

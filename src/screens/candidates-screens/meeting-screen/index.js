@@ -14,10 +14,14 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Entypo from 'react-native-vector-icons/Entypo';
 import FeedbackReportModal from '../../../components/molicules/modals/feedbackReportModal';
 import CongratulationModal from '../../../components/molicules/modals/congratulationsModal';
+import BetterLuckModal from '../../../components/molicules/modals/betterLuckModal';
+import FeedbackReportTwoModal from '../../../components/molicules/modals/feedbackReportTwoModal';
 const MettingScreen = props => {
   const insets = useSafeAreaInsets();
   const [visible, setVisible] = useState(false);
   const [congratulationModal, setCongratulationModal] = useState(false);
+  const [betterluckModal, setBetterluckModal] = useState(false);
+  const [visibleReport, setVisibleReport] = useState(false);
   return (
     <View style={styles.container}>
       <View
@@ -49,7 +53,9 @@ const MettingScreen = props => {
           <FontAwesome name="microphone-slash" size={24} color={'white'} />
           <Regular label={'Unmute'} fontSize={mvs(12)} color={colors.white} />
         </TouchableOpacity>
-        <TouchableOpacity style={{alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => setVisibleReport(true)}
+          style={{alignItems: 'center'}}>
           <Feather name="video-off" size={24} color={'white'} />
           <Regular
             label={'Start video'}
@@ -57,7 +63,9 @@ const MettingScreen = props => {
             color={colors.white}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => setBetterluckModal(true)}
+          style={{alignItems: 'center'}}>
           <MaterialCommunityIcons
             name="record-circle-outline"
             size={24}
@@ -99,6 +107,14 @@ const MettingScreen = props => {
       <CongratulationModal
         onClose={() => setCongratulationModal(false)}
         visible={congratulationModal}
+      />
+      <BetterLuckModal
+        onClose={() => setBetterluckModal(false)}
+        visible={betterluckModal}
+      />
+      <FeedbackReportTwoModal
+        onClose={() => setVisibleReport(false)}
+        visible={visibleReport}
       />
     </View>
   );
