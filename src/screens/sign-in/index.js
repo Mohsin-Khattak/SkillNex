@@ -17,6 +17,7 @@ import Bold from '../../typography/bold-text';
 import Regular from '../../typography/regular-text';
 import styles from './styles';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {navigate} from '../../navigation/navigation-ref';
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required('Name is required'),
@@ -29,7 +30,9 @@ const validationSchema = Yup.object().shape({
     .required('Password is required'),
 });
 
-const SignIn = ({navigation}) => {
+const SignIn = props => {
+  const userType = props.route?.params.userType;
+  console.log('userType', userType);
   const [candidate, setCandidate] = useState(true);
 
   const handleFormSubmit = values => {
@@ -109,7 +112,13 @@ const SignIn = ({navigation}) => {
               />
             </View>
             <PrimaryButton
-              onclick={() => navigation.replace('RecruitmentDashboard')}
+              onclick={() =>
+                navigate(
+                  userType === 'candidate'
+                    ? 'CandidateDashboard'
+                    : 'RecruitmentDashboard',
+                )
+              }
               // onclick={() => navigation.navigate('JobBoard')}
               label="Login"
               height={56}
@@ -117,7 +126,7 @@ const SignIn = ({navigation}) => {
               textStyle={styles.loginText}
             />
             <LinkedInCard
-              onPress={() => navigation.navigate('SignUp')}
+              onPress={() => navigate('SignUp')}
               onLinkedinPress={() => {}}
               text1={'Create an Account'}
               text2={'Sign Up'}

@@ -11,6 +11,7 @@ import Bold from '../../../typography/bold-text';
 import {Row} from '../../../components/atoms/row';
 import Medium from '../../../typography/medium-text';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {navigate} from '../../../navigation/navigation-ref';
 const CandidateJobBoard = props => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,12 +63,7 @@ const CandidateJobBoard = props => {
     }
   };
   const insets = useSafeAreaInsets();
-  const renderItem = ({item}) => (
-    <JobboardCard
-      item={item}
-      onPress={() => navigate('TrailerPlayerScreen', {seriesData: item})}
-    />
-  );
+  const renderItem = ({item}) => <JobboardCard item={item} props={props} />;
   return (
     <View style={styles.container}>
       <View

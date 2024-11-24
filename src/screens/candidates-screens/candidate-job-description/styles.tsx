@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-    marginHorizontal: mvs(40),
+    marginHorizontal: mvs(20),
     marginTop: mvs(50),
     borderColor: colors.primary,
     borderWidth: mvs(1),
@@ -32,12 +32,10 @@ const styles = StyleSheet.create({
   verticalView: {
     justifyContent: 'flex-start',
     gap: 5,
-    marginHorizontal: mvs(20),
     marginTop: mvs(28),
   },
   numberContainer: {
     flexDirection: 'column',
-    paddingHorizontal: mvs(20),
     marginTop: mvs(10),
   },
 });
