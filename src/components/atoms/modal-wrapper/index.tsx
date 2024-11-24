@@ -1,9 +1,8 @@
-import { CrossModal } from 'assets/icons'
-import { colors } from 'config/colors'
 import React from 'react'
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native'
 import Modal from 'react-native-modal'
-import { mvs } from 'config/metrices'
+import { mvs } from '../../../config/metrices'
+import { colors } from '../../../config/colors'
 type props = {
     style?: StyleProp<ViewStyle>
     headerStyle?: StyleProp<ViewStyle>
@@ -18,7 +17,6 @@ export const ModalWrapper = (props: props) => {
         children,
         style,
         bar,
-        headerStyle,
         visible = false,
         onBackdropPress = () => { },
         onBackButtonPress = () => { }
@@ -49,7 +47,7 @@ const styles = StyleSheet.create({
   head: {
     marginTop: mvs(20),
     borderRadius: mvs(5),
-    borderColor: colors.secondarytwo,
+    borderColor: colors.secondary2,
     borderWidth: mvs(3),
     alignSelf: 'center',
     width: mvs(110),

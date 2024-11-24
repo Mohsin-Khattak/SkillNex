@@ -11,10 +11,12 @@ export const colors = {
   red: '#FF4B26',
   green: '#0BA02C',
   transparent: 'transparent',
+  cF2F2F2: '#F2F2F2',
   gray: '#F3F3F3',
   blue: '#2075D9',
   yellow: '#FEEF06',
   grey: '#676767',
+  C3A3A3A: '#3A3A3A',
   shadow: {
     shadowColor: '#000',
     shadowOffset: {

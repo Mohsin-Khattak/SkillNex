@@ -16,7 +16,7 @@ const CustomTextInput = ({
   style,
 }) => {
   return (
-    <View style={[styles.inputContainer, {style}]}>
+    <View style={[styles.inputContainer, style]}>
       {leftIcon && leftIcon}
       <TextInput
         placeholder={placeholder}

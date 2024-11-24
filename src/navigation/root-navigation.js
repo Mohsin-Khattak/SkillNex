@@ -1,39 +1,36 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import {Platform, StatusBar, StyleSheet, View} from 'react-native';
-import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
-import Splash from '../screens/splash';
-import {colors} from '../config/colors';
-import SelectUserType from '../screens/select-user-type';
-import SignUpOrLogin from '../screens/signup-or-login';
-import OnboardingScreen from '../screens/on-boarding';
-import SignIn from '../screens/sign-in';
-import PrescreeningCandidates from '../screens/prescreening-candidates';
-import SignUp from '../screens/sign-up';
-import ForgotPassword from '../screens/forgot-password';
-import RecruitmentDashboard from '../screens/recruitment-dashboard';
-import RecruiterProfile from '../screens/recruiter-profile';
-import JobPostScreen from '../screens/iob-post-screen';
-import TotalJobPost from '../screens/total-job-post';
-import JobBoard from '../screens/job-board';
+import { StyleSheet, View } from 'react-native';
 import CandidateDashboard from '../screens/candidates-screens/candidate-dashboard';
 import CandidateEditProfile from '../screens/candidates-screens/candidate-editprofile';
 import CandidateJobBoard from '../screens/candidates-screens/candidate-jobboard';
+import FeedbackReportCandidate from '../screens/feedback-report-candidate';
+import FeedbackReportRecruiter from '../screens/feedback-report-recruiter';
+import ForgotPassword from '../screens/forgot-password';
+import JobPostScreen from '../screens/iob-post-screen';
+import JobBoard from '../screens/job-board';
+import JobSubmission from '../screens/job-submission';
+import OnboardingScreen from '../screens/on-boarding';
+import PrescreeningCandidates from '../screens/prescreening-candidates';
+import RecruiterProfile from '../screens/recruiter-profile';
+import RecruitmentDashboard from '../screens/recruitment-dashboard';
+import SelectUserType from '../screens/select-user-type';
+import SignIn from '../screens/sign-in';
+import SignUp from '../screens/sign-up';
+import SignUpOrLogin from '../screens/signup-or-login';
+import Splash from '../screens/splash';
+import TotalJobPost from '../screens/total-job-post';
+import FeedbackAnalysis from '../screens/feedback-analysis';
 
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
-  const insets = useSafeAreaInsets();
+  
   return (
     <View style={styles.container}>
-      {/* <SafeAreaView style={{flex: 0, backgroundColor: colors.primary}} /> */}
-      {/* <StatusBar
-        translucent={false}
-        backgroundColor={colors.primary}
-        barStyle={'light-content'}
-      /> */}
+    
       <Stack.Navigator
-        initialRouteName="CandidateJobBoard"
+        initialRouteName="FeedbackReportCandidate"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />
@@ -63,6 +60,10 @@ export const RootNavigator = () => {
           component={CandidateEditProfile}
         />
         <Stack.Screen name="CandidateJobBoard" component={CandidateJobBoard} />
+        <Stack.Screen name="JobSubmission" component={JobSubmission} />
+        <Stack.Screen name="FeedbackReportRecruiter" component={FeedbackReportRecruiter} />
+        <Stack.Screen name="FeedbackReportCandidate" component={FeedbackReportCandidate} />
+        <Stack.Screen name="FeedbackAnalysis" component={FeedbackAnalysis} />
       </Stack.Navigator>
     </View>
   );
