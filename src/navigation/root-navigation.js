@@ -19,6 +19,7 @@ import JobBoard from '../screens/job-board';
 import CandidateDashboard from '../screens/candidates-screens/candidate-dashboard';
 import CandidateEditProfile from '../screens/candidates-screens/candidate-editprofile';
 import CandidateJobBoard from '../screens/candidates-screens/candidate-jobboard';
+import CandidateJobDescription from '../screens/candidates-screens/candidate-job-description';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +34,7 @@ export const RootNavigator = () => {
         barStyle={'light-content'}
       /> */}
       <Stack.Navigator
-        initialRouteName="CandidateJobBoard"
+        initialRouteName="CandidateJobDescription"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />
@@ -63,6 +64,10 @@ export const RootNavigator = () => {
           component={CandidateEditProfile}
         />
         <Stack.Screen name="CandidateJobBoard" component={CandidateJobBoard} />
+        <Stack.Screen
+          name="CandidateJobDescription"
+          component={CandidateJobDescription}
+        />
       </Stack.Navigator>
     </View>
   );

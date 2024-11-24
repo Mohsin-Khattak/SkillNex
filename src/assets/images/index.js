@@ -13,3 +13,5 @@ export {default as CompanyLogo} from './drawer/companyLogo.png';
 export {default as StartTime} from './drawer/starttime.png';
 export {default as CheckCircle} from './drawer/checkcircle.png';
 export {default as GoogleCard} from './drawer/googlecard.png';
+export {default as NiraLogo} from './drawer/niralogo.png';
+export {default as DotedLine} from './drawer/dotedline.png';

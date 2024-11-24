@@ -15,6 +15,7 @@ export const colors = {
   blue: '#2075D9',
   yellow: '#FEEF06',
   grey: '#676767',
+  brown: '#4C5560',
   shadow: {
     shadowColor: '#000',
     shadowOffset: {
