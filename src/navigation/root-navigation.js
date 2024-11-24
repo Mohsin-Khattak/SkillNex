@@ -36,7 +36,6 @@ export const RootNavigator = () => {
       /> */}
       <Stack.Navigator
         initialRouteName="CandidateJobDescription"
-        initialRouteName="MettingScreen"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />
