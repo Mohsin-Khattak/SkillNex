@@ -46,7 +46,7 @@ const RecruitmentDashboard = ({navigation}) => {
         {[
           {
             title: 'Prescreening Candidates',
-            navi: 'PrescreeningCandidates',
+            navi: 'TotalJobPost',
             value: 'Pre Screening',
           },
           {title: 'Acceptance/Rejection', navi: 'JobPostScreen'},
