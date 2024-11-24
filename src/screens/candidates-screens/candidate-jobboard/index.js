@@ -8,6 +8,8 @@ import styles from './styles';
 import JobboardCard from '../../../components/molicules/jobboard-card';
 import {mvs} from '../../../config/metrices';
 import Bold from '../../../typography/bold-text';
+import {Row} from '../../../components/atoms/row';
+import Medium from '../../../typography/medium-text';
 
 const CandidateJobBoard = props => {
   const [data, setData] = useState([]);
@@ -94,6 +96,15 @@ const CandidateJobBoard = props => {
         <TouchableOpacity onPress={handlePrevious} disabled={currentPage === 1}>
           <PrevIconSvg color={currentPage === 1 ? colors.grey : colors.black} />
         </TouchableOpacity>
+        <Row>
+          <View style={styles.numberContainer}>
+            <Medium
+              style={{textAlign: 'center'}}
+              color={colors.white}
+              label={'1'}
+            />
+          </View>
+        </Row>
 
         <TouchableOpacity
           onPress={handleNext}

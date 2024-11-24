@@ -75,5 +75,13 @@ const styles = StyleSheet.create({
     color: colors.grey,
     paddingBottom: mvs(30),
   },
+  numberContainer: {
+    width: mvs(25),
+    height: mvs(25),
+    backgroundColor: colors.primary,
+    borderRadius: mvs(4),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 export default styles;
