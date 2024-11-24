@@ -34,7 +34,7 @@ const SignUpOrLogin = props => {
           textStyle={styles.loginTxt}
         />
         <PrimaryButton
-          onclick={() => navigation.replace('SignUp')}
+          onclick={() => navigate('SignUp')}
           label="Sign Up"
           height={56}
           style={styles.signupBtn}
