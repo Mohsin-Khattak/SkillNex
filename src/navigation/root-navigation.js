@@ -6,7 +6,7 @@ import CandidateEditProfile from '../screens/candidates-screens/candidate-editpr
 import CandidateJobDescription from '../screens/candidates-screens/candidate-job-description';
 import CandidateJobBoard from '../screens/candidates-screens/candidate-jobboard';
 import MettingScreen from '../screens/candidates-screens/meeting-screen';
-import FeedbackAnalysis from '../screens/feedback-analysis';
+import AIAnalyzer from '../screens/ai-analyzer';
 import FeedbackReportCandidate from '../screens/feedback-report-candidate';
 import FeedbackReportRecruiter from '../screens/feedback-report-recruiter';
 import ForgotPassword from '../screens/forgot-password';
@@ -32,7 +32,7 @@ export const RootNavigator = () => {
     <View style={styles.container}>
 
       <Stack.Navigator
-        initialRouteName="FeedbackReportCandidate"
+        initialRouteName="AIAnalyzer"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />
@@ -65,7 +65,7 @@ export const RootNavigator = () => {
         <Stack.Screen name="JobSubmission" component={JobSubmission} />
         <Stack.Screen name="FeedbackReportRecruiter" component={FeedbackReportRecruiter} />
         <Stack.Screen name="FeedbackReportCandidate" component={FeedbackReportCandidate} />
-        <Stack.Screen name="FeedbackAnalysis" component={FeedbackAnalysis} />
+        <Stack.Screen name="AIAnalyzer" component={AIAnalyzer} />
         <Stack.Screen
           name="CandidateJobDescription"
           component={CandidateJobDescription}
