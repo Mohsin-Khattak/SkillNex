@@ -116,8 +116,9 @@ const FeedbackReportModal = ({
             ))}
           </View>
         </View>
+
         <PrimaryButton
-          onclick={() => navigate('FeedbackReportRecruiter')}
+          onclick={onPress}
           style={{marginHorizontal: mvs(20), marginTop: mvs(29)}}
           label="View Feedback Report"
         />
