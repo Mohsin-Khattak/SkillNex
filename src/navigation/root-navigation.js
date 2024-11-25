@@ -1,6 +1,6 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import AIAnalyzer from '../screens/ai-analyzer';
 import CandidateDashboard from '../screens/candidates-screens/candidate-dashboard';
 import CandidateEditProfile from '../screens/candidates-screens/candidate-editprofile';
@@ -30,8 +30,8 @@ export const RootNavigator = () => {
   return (
     <View style={styles.container}>
       <Stack.Navigator
-        initialRouteName="Splash"
-        screenOptions={{ headerShown: false }}>
+        initialRouteName="MettingScreen"
+        screenOptions={{headerShown: false}}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SelectUserType" component={SelectUserType} />
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
@@ -81,5 +81,5 @@ export const RootNavigator = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {flex: 1},
 });

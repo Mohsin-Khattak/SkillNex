@@ -1,5 +1,11 @@
 import React from 'react';
-import {Image, ScrollView, View} from 'react-native';
+import {
+  Image,
+  Platform,
+  ProgressBarAndroidBase,
+  ScrollView,
+  View,
+} from 'react-native';
 import {Profile} from '../../assets/images';
 import {BackCircle} from '../../components/atoms/headers/back-circle';
 import PrimaryButton from '../../components/carts/button';
@@ -8,10 +14,19 @@ import Bold from '../../typography/bold-text';
 import Regular from '../../typography/regular-text';
 import {styles} from './styles';
 import {navigate} from '../../navigation/navigation-ref';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const FeedbackReportRecruiter = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <View style={styles.container}>
+      <View
+        style={{
+          paddingTop: Platform.OS === 'ios' ? insets.top : 0,
+          backgroundColor: colors.white,
+        }}
+      />
       <View style={styles.header}>
         <BackCircle />
         <Bold
@@ -120,6 +135,7 @@ const FeedbackReportRecruiter = () => {
             textStyle={{fontSize: 14}}
           />
           <PrimaryButton
+            style={{marginBottom: 20}}
             onclick={() => navigate('FeedbackReportCandidate')}
             label={'Further Evaluation'}
             textStyle={{fontSize: 14}}

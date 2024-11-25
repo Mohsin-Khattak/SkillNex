@@ -16,6 +16,7 @@ import FeedbackReportModal from '../../../components/molicules/modals/feedbackRe
 import CongratulationModal from '../../../components/molicules/modals/congratulationsModal';
 import BetterLuckModal from '../../../components/molicules/modals/betterLuckModal';
 import FeedbackReportTwoModal from '../../../components/molicules/modals/feedbackReportTwoModal';
+import {navigate} from '../../../navigation/navigation-ref';
 const MettingScreen = props => {
   const insets = useSafeAreaInsets();
   const [visible, setVisible] = useState(false);
@@ -31,17 +32,20 @@ const MettingScreen = props => {
         }}
       />
       <MeetingHeader name="Ui/UX Designs" />
-      <Image source={MettingPic} style={{width: '100%', height: '84%'}} />
-      <Image
-        source={Frontcamera}
-        style={{
-          width: mvs(143),
-          height: mvs(174),
-          position: 'absolute',
-          bottom: '12%',
-          right: 10,
-        }}
-      />
+      <View style={{flex: 1}}>
+        <Image source={MettingPic} style={{width: '100%', height: '100%'}} />
+        <Image
+          source={Frontcamera}
+          style={{
+            width: mvs(143),
+            height: mvs(174),
+            position: 'absolute',
+            bottom: '12%',
+            right: 10,
+          }}
+        />
+      </View>
+
       <Row
         style={{
           width: '100%',
@@ -100,8 +104,13 @@ const MettingScreen = props => {
           <Regular label={'More'} fontSize={mvs(12)} color={colors.white} />
         </TouchableOpacity>
       </Row>
+
       <FeedbackReportModal
         onClose={() => setVisible(false)}
+        onPress={() => {
+          navigate('FeedbackReportRecruiter');
+          setVisible(false);
+        }}
         visible={visible}
       />
       <CongratulationModal
