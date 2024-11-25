@@ -116,7 +116,7 @@ const SignIn = props => {
               onclick={() =>
                 navigate(
                   userType === 'candidate'
-                    ? 'CandidateDashboard'
+                    ? 'Drawer'
                     : 'RecruitmentDashboard',
                 )
               }

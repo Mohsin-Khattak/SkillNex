@@ -1,24 +1,21 @@
-import React, {useState, useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ScrollView,
   Dimensions,
-  StyleSheet,
   Platform,
+  ScrollView,
   StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import {SelectUser} from '../../assets/images';
-import styles from './styles';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Swipe1stSvg, Swipe2ndSvg, Swipe3rdSvg} from '../../assets/icons/user';
 import {Row} from '../../components/atoms/row';
 import {colors} from '../../config/colors';
 import {mvs} from '../../config/metrices';
 import Bold from '../../typography/bold-text';
 import Regular from '../../typography/regular-text';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import styles from './styles';
 
 const {width} = Dimensions.get('window');
 
@@ -76,6 +73,7 @@ const OnboardingScreen = ({navigation}) => {
       });
     }
   };
+
   const insets = useSafeAreaInsets();
 
   return (
@@ -86,7 +84,19 @@ const OnboardingScreen = ({navigation}) => {
         barStyle={'dark-content'}
       />
       <View style={{paddingTop: Platform.OS === 'ios' ? insets.top : 0}} />
+      {/* Static Header */}
+      <Row style={{paddingHorizontal:20}}>
+        <Text style={styles.stepIndicator}>{`${currentStep + 1}/${
+          screens.length
+        }`}</Text>
+        <TouchableOpacity
+          onPress={() => navigation.replace('SelectUserType')}
+          style={styles.skipButton}>
+          <Text style={styles.skipText}>Skip</Text>
+        </TouchableOpacity>
+      </Row>
 
+      {/* Swipeable Content */}
       <ScrollView
         ref={scrollRef}
         horizontal
@@ -94,53 +104,44 @@ const OnboardingScreen = ({navigation}) => {
         showsHorizontalScrollIndicator={false}
         onScroll={handleScroll}
         scrollEventThrottle={16}>
-        {screens.map((screen, index) => (
+        {screens.map(screen => (
           <View key={screen.id} style={{width, paddingHorizontal: 20}}>
-            <Row>
-              <Text style={styles.stepIndicator}>{`${index + 1}/${
-                screens.length
-              }`}</Text>
-              <TouchableOpacity
-                onPress={() => navigation.replace('SelectUserType')}
-                style={styles.skipButton}>
-                <Text style={styles.skipText}>Skip</Text>
-              </TouchableOpacity>
-            </Row>
             {screen.image}
             <Bold label={screen.title} style={styles.title} />
             <Regular label={screen.description} style={styles.description} />
-            <View style={styles.buttonContainer}>
-              {currentStep > 0 ? (
-                <TouchableOpacity
-                  onPress={scrollToPrevious}
-                  style={styles.prevButton}>
-                  <Text style={styles.prevText}>Prev</Text>
-                </TouchableOpacity>
-              ) : (
-                <View />
-              )}
-              <View style={styles.pagination}>
-                {screens.map((_, i) => (
-                  <View
-                    key={i}
-                    style={[
-                      styles.dot,
-                      currentStep === i ? styles.activeDot : styles.inactiveDot,
-                    ]}
-                  />
-                ))}
-              </View>
-              <TouchableOpacity
-                onPress={scrollToNext}
-                style={styles.nextButton}>
-                <Text style={styles.nextText}>
-                  {currentStep < screens.length - 1 ? 'Next' : 'Get Started'}
-                </Text>
-              </TouchableOpacity>
-            </View>
           </View>
         ))}
       </ScrollView>
+
+      {/* Static Footer */}
+      <View style={styles.buttonContainer}>
+        {currentStep > 0 ? (
+          <TouchableOpacity
+            onPress={scrollToPrevious}
+            style={styles.prevButton}>
+            <Text style={styles.prevText}>Prev</Text>
+          </TouchableOpacity>
+        ) : (
+          <View
+            style={styles.prevButton}/>
+        )}
+        <View style={styles.pagination}>
+          {screens.map((_, i) => (
+            <View
+              key={i}
+              style={[
+                styles.dot,
+                currentStep === i ? styles.activeDot : styles.inactiveDot,
+              ]}
+            />
+          ))}
+        </View>
+        <TouchableOpacity onPress={scrollToNext} style={styles.nextButton}>
+          <Text style={styles.nextText}>
+            {currentStep < screens.length - 1 ? 'Next' : 'Get Started'}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

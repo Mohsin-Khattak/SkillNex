@@ -10,7 +10,7 @@ const CustomDrawerContent = props => {
   return (
     <View style={styles.drawerContainer}>
       <Row style={styles.profileContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => props.navigation.goBack()}>
           <BackIconSvg />
         </TouchableOpacity>
         <Image source={Profile} style={styles.profileImage} />
