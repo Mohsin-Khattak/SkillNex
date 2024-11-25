@@ -17,6 +17,7 @@ import PrimaryButton from '../../components/carts/button';
 import {colors} from '../../config/colors';
 import styles from './styles';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { goBack } from '../../navigation/navigation-ref';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -79,7 +80,7 @@ const RecruiterProfile = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={values => {
-          console.log('Form data:', values);
+          goBack();
         }}>
         {({
           handleChange,

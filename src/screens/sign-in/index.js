@@ -1,6 +1,6 @@
 import {Formik} from 'formik';
 import React, {useState} from 'react';
-import {Platform, View} from 'react-native';
+import {Platform, TouchableOpacity, View} from 'react-native';
 import * as Yup from 'yup';
 import {
   CurrentJobIconSvg,
@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = props => {
-  const userType = props.route?.params.userType;
+  const userType = props.route?.params?.userType;
   console.log('userType', userType);
   const [candidate, setCandidate] = useState(true);
 
@@ -105,11 +105,12 @@ const SignIn = props => {
               style={{
                 justifyContent: 'flex-end',
               }}>
-              <Regular
-                onPress={() => navigation.navigate('ForgotPassword')}
-                style={styles.forgetTxt}
-                label={'Forgot Password?'}
-              />
+              <TouchableOpacity onPress={() => navigate('ForgotPassword')}>
+                <Regular
+                  style={styles.forgetTxt}
+                  label={'Forgot Password?'}
+                />
+              </TouchableOpacity>
             </View>
             <PrimaryButton
               onclick={() =>

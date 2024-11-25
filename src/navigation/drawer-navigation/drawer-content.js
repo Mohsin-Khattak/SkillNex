@@ -1,45 +1,108 @@
 import React from 'react';
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {PrivacyPolicy} from '../../assets/icons';
-import {logoNew} from '../../assets/images';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import BackIconSvg from '../../assets/icons/user/back-icon-svg';
+import {Profile} from '../../assets/images';
 import {Row} from '../../components/atoms/row';
-import Regular from '../../typography/regular-text';
 import {colors} from '../../config/colors';
-import {mvs} from '../../assets/metrices';
+
 const CustomDrawerContent = props => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image source={logoNew} style={{height: mvs(70), width: mvs(55)}} />
+    <View style={styles.drawerContainer}>
+      <Row style={styles.profileContainer}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <BackIconSvg />
+        </TouchableOpacity>
+        <Image source={Profile} style={styles.profileImage} />
+        <Text style={styles.userName}>{'Sadruddin'}</Text>
+      </Row>
+      <View style={styles.menuContainer}>
+        <DrawerItem
+          icon="person-outline"
+          label="Edit Profile"
+          onPress={() => props.navigation.navigate('Edit Profile')}
+        />
+        <DrawerItem
+          icon="calendar-outline"
+          label="Practice Interview"
+          onPress={() => props.navigation.navigate('Practice Interview')}
+        />
+        <DrawerItem
+          icon="briefcase-outline"
+          label="Job Board"
+          onPress={() => props.navigation.navigate('Job Board')}
+        />
+        <DrawerItem
+          icon="bar-chart-outline"
+          label="Feedback and Reports"
+          onPress={() => props.navigation.navigate('Feedback and Reports')}
+        />
+        <DrawerItem
+          icon="notifications-outline"
+          label="Notifications"
+          onPress={() => props.navigation.navigate('Notifications')}
+        />
+        <DrawerItem
+          icon="help-circle-outline"
+          label="Support"
+          onPress={() => props.navigation.navigate('Support')}
+        />
       </View>
-      <TouchableOpacity onPress={() => {}}>
-        <Row style={styles.row}>
-          <PrivacyPolicy />
-          <Regular style={styles.title} label={'privacy_policy'} />
-        </Row>
-      </TouchableOpacity>
     </View>
   );
 };
-export default CustomDrawerContent;
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.primary2,
-  },
 
-  header: {
-    height: mvs(150),
-    backgroundColor: colors.primary,
-    marginBottom: mvs(48.5),
-    borderBottomLeftRadius: mvs(15),
-    borderBottomRightRadius: mvs(15),
-    alignItems: 'center',
-    justifyContent: 'center',
+const DrawerItem = ({icon, label, onPress}) => (
+  <TouchableOpacity style={styles.drawerItem} onPress={onPress}>
+    <Ionicons name={icon} size={20} color="#000" />
+    <Text style={styles.drawerItemText}>{label}</Text>
+  </TouchableOpacity>
+);
+export default CustomDrawerContent;
+
+const styles = StyleSheet.create({
+  drawerContainer: {
+    flex: 1,
   },
-  row: {justifyContent: 'flex-start', alignItems: 'center'},
-  title: {marginLeft: mvs(10), color: colors.primary, fontSize: mvs(16)},
-  language: {marginLeft: mvs(10), color: colors.primary, fontSize: mvs(20)},
-  content: {color: colors.primary, fontSize: mvs(20), marginTop: mvs(30)},
-  mtop21: {marginTop: mvs(21)},
+  profileContainer: {
+    padding: 20,
+    alignItems: 'center',
+    backgroundColor: colors.primary,
+    justifyContent: 'flex-start',
+    gap: 10,
+  },
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  userInfo: {
+    gap: 10,
+  },
+  userName: {
+    fontSize: 14,
+    color: colors.white,
+  },
+  menuContainer: {
+    paddingVertical: 10,
+  },
+  drawerItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+  },
+  drawerItemText: {
+    marginLeft: 10,
+    fontSize: 16,
+  },
+  screenContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  screenText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });

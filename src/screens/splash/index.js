@@ -37,8 +37,6 @@ const Splash = ({navigation}) => {
       {/* <LoaderSvg /> */}
   
       <LottieView source={ThreeDot} autoPlay loop style={styles.lottie} />
-  s
-
     </GradientBackground>
   );
 };

@@ -9,36 +9,23 @@ import CandidateJobBoard from '../screens/candidates-screens/candidate-jobboard'
 import MettingScreen from '../screens/candidates-screens/meeting-screen';
 import FeedbackReportCandidate from '../screens/feedback-report-candidate';
 import FeedbackReportRecruiter from '../screens/feedback-report-recruiter';
-import ForgotPassword from '../screens/forgot-password';
 import JobPostScreen from '../screens/iob-post-screen';
 import JobBoard from '../screens/job-board';
 import JobSubmission from '../screens/job-submission';
-import OnboardingScreen from '../screens/on-boarding';
 import PrescreeningCandidates from '../screens/prescreening-candidates';
 import RecruiterProfile from '../screens/recruiter-profile';
 import RecruitmentDashboard from '../screens/recruitment-dashboard';
-import SelectUserType from '../screens/select-user-type';
-import SignIn from '../screens/sign-in';
-import SignUp from '../screens/sign-up';
-import SignUpOrLogin from '../screens/signup-or-login';
-import Splash from '../screens/splash';
 import TotalJobPost from '../screens/total-job-post';
 import DrawerNavigation from './drawer-navigation/drawer-navigation';
 
 const Stack = createNativeStackNavigator();
 
-export const RootNavigator = () => {
+export const RecruiterStackNavigation = () => {
   return (
     <View style={styles.container}>
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Splash" component={Splash} />
-        <Stack.Screen name="SelectUserType" component={SelectUserType} />
-        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen
           name="PrescreeningCandidates"
           component={PrescreeningCandidates}
@@ -51,7 +38,6 @@ export const RootNavigator = () => {
         <Stack.Screen name="JobPostScreen" component={JobPostScreen} />
         <Stack.Screen name="TotalJobPost" component={TotalJobPost} />
         <Stack.Screen name="JobBoard" component={JobBoard} />
-        <Stack.Screen name="SignUpOrLogin" component={SignUpOrLogin} />
         <Stack.Screen
           name="CandidateDashboard"
           component={CandidateDashboard}

@@ -9,6 +9,7 @@ import SemiBold from '../../../typography/semi-bold-text';
 import {mvs} from '../../../config/metrices';
 import Regular from '../../../typography/regular-text';
 import {StartTime} from '../../../assets/images';
+import { navigate } from '../../../navigation/navigation-ref';
 
 const CandidateDashboard = props => {
   const insets = useSafeAreaInsets();
@@ -55,7 +56,7 @@ const CandidateDashboard = props => {
           'Welcome to the starting line of your interview prep! Here, we’ll help you kick off the right way—through focused practice and self-evaluation.'
         }
       />
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigate('MettingScreen')}>
         <Image source={StartTime} style={styles.startImage} />
       </TouchableOpacity>
       <PrimaryButton
