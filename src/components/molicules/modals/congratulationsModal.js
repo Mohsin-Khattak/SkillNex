@@ -4,6 +4,8 @@ import {colors} from '../../../config/colors';
 import {mvs} from '../../../config/metrices';
 import {ModalWrapper} from '../../atoms/modal-wrapper';
 import {CongratesImage} from '../../../assets/images';
+import LottieLoader from '../../../assets/icons/lottie/lottie-loader.json';
+import LottieView from 'lottie-react-native';
 
 const CongratulationModal = ({
   style,
@@ -23,12 +25,32 @@ const CongratulationModal = ({
           style={{width: '100%', height: 373, borderRadius: 10}}
           source={CongratesImage}
         />
+        <View style={styles.loaderContainer}>
+          <LottieView
+            source={LottieLoader}
+            autoPlay
+            loop
+            style={styles.lottie}
+          />
+        </View>
       </View>
     </ModalWrapper>
   );
 };
 export default CongratulationModal;
 const styles = StyleSheet.create({
+  loaderContainer: {
+    position: 'absolute',
+    height: mvs(120),
+    bottom: mvs(0),
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: '#F5F9FF',
+  },
+  lottie: {
+    height: mvs(40),
+    width: mvs(40),
+  },
   contentContainerStyle: {
     width: '100%',
     flex: 1,

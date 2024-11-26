@@ -91,7 +91,9 @@ const CandidateEditProfile = () => {
                 <TouchableOpacity
                   onPress={() => setEditable(f => !f)}
                   style={styles.editButton}>
-                  <Text style={styles.editButtonText}>Edit</Text>
+                  <Text style={styles.editButtonText}>
+                    {editable ? 'Save' : 'Edit'}
+                  </Text>
                 </TouchableOpacity>
               </View>
 

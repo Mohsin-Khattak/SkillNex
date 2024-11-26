@@ -35,7 +35,7 @@ export default BetterLuckModal;
 const styles = StyleSheet.create({
   loaderContainer: {
     position: 'absolute',
-    height: mvs(110),
+    height: mvs(120),
     bottom: mvs(0),
     alignItems: 'center',
     width: '100%',

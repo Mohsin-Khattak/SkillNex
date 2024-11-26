@@ -3,19 +3,20 @@ import {
   Dimensions,
   Image,
   Platform,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AIChart from '../../assets/images/ai-chart.png';
 import Voice from '../../assets/images/voice.png';
+import { BackCircle } from '../../components/atoms/headers/back-circle';
 import PrimaryButton from '../../components/carts/button';
-import {colors} from '../../config/colors';
+import { colors } from '../../config/colors';
 import Bold from '../../typography/bold-text';
 import Regular from '../../typography/regular-text';
-import {BackCircle} from '../../components/atoms/headers/back-circle';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 // import { styles } from "./styles";
 
 const {width} = Dimensions.get('window');
@@ -37,53 +38,57 @@ const AIAnalyzer = () => {
           <Text style={styles.downloadText}>Download</Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.title}>AI Analyser</Text>
-      <Regular
-        fontSize={12}
-        color={'#8D8D8D'}
-        label={'Process personalization'}
-      />
-      {/* Insights Section */}
-      <View style={styles.insightsContainer}>
-        <Text style={styles.insightsTitle}>Insights</Text>
-        <Text style={styles.subtitle}>Review Your Overall Performance</Text>
-        {/* <View style={styles.audioVisualizer} /> */}
-        <Image
-          source={Voice}
-          style={{height: 50, width: '100%', marginBottom: 10}}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{flexGrow: 1, paddingBottom: 20}}>
+        <Text style={styles.title}>AI Analyser</Text>
+        <Regular
+          fontSize={12}
+          color={'#8D8D8D'}
+          label={'Process personalization'}
         />
-        <Text style={styles.insightsText}>
-          Design Thinking Is A Problem-Solving Methodology That Emphasizes
-          Empathizing With Users, Defining Problems, Ideating Solutions,
-          Prototyping, And Testing.
-          <Text style={styles.highlightText}>
-            It's A Human-Centered Approach To Design That Encourages Creativity,
-            Innovation, And Collaboration.
+        {/* Insights Section */}
+        <View style={styles.insightsContainer}>
+          <Text style={styles.insightsTitle}>Insights</Text>
+          <Text style={styles.subtitle}>Review Your Overall Performance</Text>
+          {/* <View style={styles.audioVisualizer} /> */}
+          <Image
+            source={Voice}
+            style={{height: 50, width: '100%', marginBottom: 10}}
+          />
+          <Text style={styles.insightsText}>
+            Design Thinking Is A Problem-Solving Methodology That Emphasizes
+            Empathizing With Users, Defining Problems, Ideating Solutions,
+            Prototyping, And Testing.
+            <Text style={styles.highlightText}>
+              It's A Human-Centered Approach To Design That Encourages
+              Creativity, Innovation, And Collaboration.
+            </Text>
+            creativity, innovation, and collaboration. The design thinking
           </Text>
-          creativity, innovation, and collaboration. The design thinking
-        </Text>
-      </View>
+        </View>
 
-      {/* Facial Expression Section */}
-      <Bold label={'Facial Expression'} style={styles.graphTitle} />
-      <View style={styles.graphContainer}>
-        {/* Placeholder for the graph */}
-        <Image source={AIChart} style={{height: 200, width: 200}} />
+        {/* Facial Expression Section */}
+        <Bold label={'Facial Expression'} style={styles.graphTitle} />
+        <View style={styles.graphContainer}>
+          {/* Placeholder for the graph */}
+          <Image source={AIChart} style={{height: 200, width: 200}} />
 
-        {/* <View style={styles.graphPlaceholder} /> */}
-      </View>
+          {/* <View style={styles.graphPlaceholder} /> */}
+        </View>
 
-      {/* Buttons */}
-      <View style={{gap: 20}}>
-        <PrimaryButton
-          textStyle={{fontSize: 16}}
-          label="Recommended for Next Round"
-        />
-        <PrimaryButton
-          textStyle={{fontSize: 16}}
-          label="Apply For Another Evaluation"
-        />
-      </View>
+        {/* Buttons */}
+        <View style={{gap: 20}}>
+          <PrimaryButton
+            textStyle={{fontSize: 16}}
+            label="Recommended for Next Round"
+          />
+          <PrimaryButton
+            textStyle={{fontSize: 16}}
+            label="Apply For Another Evaluation"
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };

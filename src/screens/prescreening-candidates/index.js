@@ -209,7 +209,7 @@ const PrescreeningCandidates = props => {
           keyExtractor={item => item.id}
           renderItem={({item, index}) => (
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('JobBoard')}
+              onPress={() => props.navigation.navigate('JobPostScreen')}
               style={[
                 styles.tableRow,
                 {backgroundColor: index % 2 == 0 ? colors.white : colors.gray},

@@ -50,6 +50,7 @@ const SignIn = props => {
           password: '',
         }}
         validationSchema={validationSchema}
+        validateOnBlur
         onSubmit={handleFormSubmit}>
         {({
           handleChange,

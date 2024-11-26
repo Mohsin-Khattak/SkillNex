@@ -16,20 +16,22 @@ const CustomTextInput = ({
   style,
 }) => {
   return (
-    <View style={[styles.inputContainer, style]}>
-      {leftIcon && leftIcon}
-      <TextInput
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        onBlur={onBlur}
-        secureTextEntry={secureTextEntry}
-        style={styles.input}
-      />
-      {rightIcon && rightIcon}
+    <>
+      <View style={[styles.inputContainer, style]}>
+        {leftIcon && leftIcon}
+        <TextInput
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+          onBlur={onBlur}
+          secureTextEntry={secureTextEntry}
+          style={styles.input}
+        />
+        {rightIcon && rightIcon}
 
-      {touched && error && <Text style={styles.errorText}>{error}</Text>}
-    </View>
+      </View>
+        {error && <Text style={styles.errorText}>{error}</Text>}
+    </>
   );
 };
 
