@@ -19,6 +19,7 @@ import {colors} from '../../config/colors';
 import Bold from '../../typography/bold-text';
 import styles from './styles';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { navigate } from '../../navigation/navigation-ref';
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required('Name is required'),
@@ -35,8 +36,8 @@ const validationSchema = Yup.object().shape({
     .required('Confirm Password is required'),
 });
 
-const SignUp = ({navigation}) => {
-  const [candidate, setCandidate] = useState(true);
+const SignUp = ({navigation,route}) => {
+  const isCandidate = route?.params?.userType ==='candidate';
   const handleFormSubmit = values => {
     console.log('Form Values:', values);
   };
@@ -78,7 +79,7 @@ const SignUp = ({navigation}) => {
 
               <CustomTextInput
                 leftIcon={<NameIconSvg />}
-                placeholder={candidate ? 'Full Name' : 'Recruiter Name'}
+                placeholder={isCandidate ? 'Full Name' : 'Recruiter Name'}
                 value={values.fullName}
                 onChangeText={handleChange('fullName')}
                 onBlur={handleBlur('fullName')}
@@ -87,9 +88,9 @@ const SignUp = ({navigation}) => {
 
               <CustomTextInput
                 leftIcon={
-                  candidate ? <CurrentJobIconSvg /> : <CountryIconSvg />
+                  isCandidate ? <CurrentJobIconSvg /> : <CountryIconSvg />
                 }
-                placeholder={candidate ? 'Current Job Title' : 'Country'}
+                placeholder={isCandidate ? 'Current Job Title' : 'Country'}
                 value={values.jobTitle}
                 onChangeText={handleChange('jobTitle')}
                 onBlur={handleBlur('jobTitle')}
@@ -108,7 +109,7 @@ const SignUp = ({navigation}) => {
               <CustomTextInput
                 leftIcon={<MailIconSvg />}
                 placeholder={
-                  !candidate ? 'Email Address' : 'Company Email Address'
+                  isCandidate ? 'Email Address' : 'Company Email Address'
                 }
                 value={values.email}
                 onChangeText={handleChange('email')}
@@ -159,14 +160,16 @@ const SignUp = ({navigation}) => {
                 </Text>
               </Text>
               <PrimaryButton
-                onclick={() => navigation.replace('RecruitmentDashboard')}
+                onclick={() =>
+                  navigate(isCandidate ? 'Drawer' : 'RecruitmentDashboard')
+                }
                 label="Create Account"
                 height={56}
                 style={styles.signupBtn}
                 textStyle={styles.signupTxt}
               />
               <LinkedInCard
-                onPress={() => navigation.navigate('SignIn')}
+                onPress={() => navigate('SignIn',{userType:route?.params?.userType})}
                 onLinkedinPress={() => {}}
                 text1={'I Already Have an Account'}
                 text2={'Login'}

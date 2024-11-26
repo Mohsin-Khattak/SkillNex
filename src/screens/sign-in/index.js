@@ -1,6 +1,7 @@
-import {Formik} from 'formik';
-import React, {useState} from 'react';
-import {Platform, TouchableOpacity, View} from 'react-native';
+import { Formik } from 'formik';
+import React from 'react';
+import { Platform, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 import {
   CurrentJobIconSvg,
@@ -9,15 +10,14 @@ import {
   NameIconSvg,
   OpenEyeIconSvg,
 } from '../../assets/icons/user';
-import {KeyboardAvoidScrollview} from '../../components/atoms/keyboard-avoid-scrollview';
+import { KeyboardAvoidScrollview } from '../../components/atoms/keyboard-avoid-scrollview';
 import PrimaryButton from '../../components/carts/button';
 import CustomTextInput from '../../components/carts/customTextInput';
-import {LinkedInCard} from '../../components/molicules/linkedin-card';
+import { LinkedInCard } from '../../components/molicules/linkedin-card';
+import { navigate } from '../../navigation/navigation-ref';
 import Bold from '../../typography/bold-text';
 import Regular from '../../typography/regular-text';
 import styles from './styles';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {navigate} from '../../navigation/navigation-ref';
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required('Name is required'),
@@ -31,9 +31,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = props => {
-  const userType = props.route?.params?.userType;
-  console.log('userType', userType);
-  const [candidate, setCandidate] = useState(true);
+    const isCandidate = props.route?.params?.userType === 'candidate';
+
+  console.log('isCandidate', isCandidate);
 
   const handleFormSubmit = values => {
     console.log('Form Values:', values);
@@ -75,7 +75,7 @@ const SignIn = props => {
             />
             <CustomTextInput
               leftIcon={<CurrentJobIconSvg />}
-              placeholder={candidate ? 'Candidate Name' : 'Recruiter Name'}
+              placeholder={isCandidate ? 'Candidate Name' : 'Recruiter Name'}
               value={values.fullName}
               onChangeText={handleChange('fullName')}
               onBlur={handleBlur('fullName')}
@@ -106,28 +106,22 @@ const SignIn = props => {
                 justifyContent: 'flex-end',
               }}>
               <TouchableOpacity onPress={() => navigate('ForgotPassword')}>
-                <Regular
-                  style={styles.forgetTxt}
-                  label={'Forgot Password?'}
-                />
+                <Regular style={styles.forgetTxt} label={'Forgot Password?'} />
               </TouchableOpacity>
             </View>
             <PrimaryButton
               onclick={() =>
-                navigate(
-                  userType === 'candidate'
-                    ? 'Drawer'
-                    : 'RecruitmentDashboard',
-                )
+                navigate(isCandidate ? 'Drawer' : 'RecruitmentDashboard')
               }
-              // onclick={() => navigation.navigate('JobBoard')}
               label="Login"
               height={56}
               style={styles.loginBtn}
               textStyle={styles.loginText}
             />
             <LinkedInCard
-              onPress={() => navigate('SignUp')}
+              onPress={() =>
+                navigate('SignUp', {userType: props?.route?.params?.userType})
+              }
               onLinkedinPress={() => {}}
               text1={'Create an Account'}
               text2={'Sign Up'}

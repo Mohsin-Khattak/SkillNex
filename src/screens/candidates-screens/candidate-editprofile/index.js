@@ -30,6 +30,7 @@ const validationSchema = Yup.object().shape({
 
 const CandidateEditProfile = () => {
   const [fileName, setFileName] = useState('');
+  const [editable, setEditable] = useState(false);
 
   const handleFileUpload = () => {
     pick({
@@ -37,25 +38,17 @@ const CandidateEditProfile = () => {
       type: [types.pdf, types.docx],
     })
       .then(res => {
-        const allFilesArePdfOrDocx = res?.every(file => file.hasRequestedType);
-
-        if (!allFilesArePdfOrDocx) {
-          Alert.alert(
-            'Invalid File Type',
-            'Please select only PDF or DOCX files.',
-          );
-          return;
+        if (res.length > 0) {
+          console.log('Selected files:', res);
+          setFileName(res[0].name || '');
         }
-
-        console.log('Selected files:', res);
-        addResult(res);
       })
       .catch(err => {
         if (err && err.message === 'User canceled the picker') {
           console.log('User canceled the picker');
         } else {
           console.error('Error picking document:', err);
-          Alert.alert('An unknown error occurred while picking files.');
+          // Alert.alert('An unknown error occurred while picking files.');
         }
       });
   };
@@ -73,7 +66,7 @@ const CandidateEditProfile = () => {
       <Formik
         initialValues={{
           education: '',
-          experiance: '',
+          experience: '',
           current_job_title: '',
           field: '',
         }}
@@ -95,7 +88,9 @@ const CandidateEditProfile = () => {
             <View style={styles.contentContainer}>
               <View style={styles.headerRow}>
                 <Text style={styles.title}>Profile</Text>
-                <TouchableOpacity style={styles.editButton}>
+                <TouchableOpacity
+                  onPress={() => setEditable(f => !f)}
+                  style={styles.editButton}>
                   <Text style={styles.editButtonText}>Edit</Text>
                 </TouchableOpacity>
               </View>
@@ -107,9 +102,9 @@ const CandidateEditProfile = () => {
                   placeholder: 'Education',
                 },
                 {
-                  label: 'Experiance',
-                  name: 'experiance',
-                  placeholder: 'Experiance',
+                  label: 'Experience',
+                  name: 'experience',
+                  placeholder: 'Experience',
                 },
                 {
                   label: 'Current Job Title',
@@ -125,6 +120,7 @@ const CandidateEditProfile = () => {
                 <View key={index} style={styles.inputContainer}>
                   <Text style={styles.label}>{item.label}</Text>
                   <TextInput
+                    editable={editable}
                     style={styles.input}
                     placeholder={item.placeholder}
                     placeholderTextColor={colors.grey}
@@ -141,12 +137,12 @@ const CandidateEditProfile = () => {
               <View style={styles.inputContainer}>
                 <Text style={styles.label}>Upload CV</Text>
                 <TouchableOpacity
+                  disabled={!editable}
                   style={styles.uploadContainer}
                   onPress={handleFileUpload}>
                   <UploadIconSvg />
                   <Text style={styles.uploadText}>
-                    {fileName || 'Drag and drop file here or '}
-                    <Text style={styles.browseText}>browse file</Text>
+                    {fileName || 'Browse file'}
                   </Text>
                 </TouchableOpacity>
               </View>

@@ -4,7 +4,8 @@ import {BetterLuckImage, CongratesImage} from '../../../assets/images';
 import {colors} from '../../../config/colors';
 import {mvs} from '../../../config/metrices';
 import {ModalWrapper} from '../../atoms/modal-wrapper';
-
+import LottieView from 'lottie-react-native';
+import LottieLoader from '../../../assets/icons/lottie/lottie-loader.json';
 const BetterLuckModal = ({
   style,
   visible = false,
@@ -23,12 +24,29 @@ const BetterLuckModal = ({
           style={{width: '100%', height: 373, borderRadius: 10}}
           source={BetterLuckImage}
         />
+        <View style={styles.loaderContainer}>
+        <LottieView source={LottieLoader} autoPlay loop style={styles.lottie} />
+        </View>
       </View>
     </ModalWrapper>
   );
 };
 export default BetterLuckModal;
 const styles = StyleSheet.create({
+  loaderContainer: {
+    position: 'absolute',
+    height: mvs(110),
+    bottom: mvs(0),
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: '#F5F9FF',
+    // top: mvs(150),
+    // left: '40%',
+  },
+  lottie: {
+    height: mvs(40),
+    width: mvs(40),
+  },
   contentContainerStyle: {
     width: '100%',
     flex: 1,

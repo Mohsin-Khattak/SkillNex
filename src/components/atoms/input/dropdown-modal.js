@@ -15,48 +15,39 @@ const DropdownModal = ({
     items = [],
 }) => {
     return (
-        <ModalWrapper
-            onBackdropPress={() => onClose()}
-            onBackButtonPress={() => onClose()}
-            visible={visible}
-            style={[styles.contentContainerStyle, style]}>
-            <View style={styles.container}>
-                <View style={styles.header} />
-                <TouchableOpacity onPress={() => onClose()} style={styles.cross}>
-                    {/* <CrossModal height={mvs(30)} width={mvs(30)} /> */}
+      <ModalWrapper
+        onBackdropPress={() => onClose()}
+        onBackButtonPress={() => onClose()}
+        visible={visible}
+        style={[styles.contentContainerStyle, style]}>
+        <View style={styles.container}>
+          <ScrollView
+            contentContainerStyle={{
+              flexGrow: 1,
+              paddingHorizontal: mvs(20),
+              paddingTop: mvs(10),
+            }}>
+            {items?.map((item, index) => {
+              return (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => onChangeText(item?.id)}
+                  style={styles.button}>
+                  <Medium label={item?.title} style={{fontSize: mvs(16)}} />
+                  <Icon
+                    name={
+                      item?.id === value
+                        ? 'radio-button-checked'
+                        : 'radio-button-unchecked'
+                    }
+                    size={mvs(20)}
+                  />
                 </TouchableOpacity>
-                <Medium
-                    numberOfLines={2}
-                    style={styles.pick}
-                    label={`Please Select one`}
-                />
-                <ScrollView
-                    contentContainerStyle={{
-                        flexGrow: 1,
-                        paddingHorizontal: mvs(20),
-                        paddingTop: mvs(10),
-                    }}>
-                    {items?.map((item, index) => {
-                        return (
-                            <TouchableOpacity
-                                key={index}
-                                onPress={() => onChangeText(item?.id)}
-                                style={styles.button}>
-                                <Medium label={item?.title} style={{ fontSize: mvs(16) }} />
-                                <Icon
-                                    name={
-                                        item?.id === value
-                                            ? 'radio-button-checked'
-                                            : 'radio-button-unchecked'
-                                    }
-                                    size={mvs(20)}
-                                />
-                            </TouchableOpacity>
-                        );
-                    })}
-                </ScrollView>
-            </View>
-        </ModalWrapper>
+              );
+            })}
+          </ScrollView>
+        </View>
+      </ModalWrapper>
     );
 };
 export default DropdownModal;
@@ -71,7 +62,7 @@ const styles = StyleSheet.create({
     },
     container: {
         maxHeight: mvs(572),
-        minHeight: mvs(200),
+        minHeight: mvs(100),
         backgroundColor: colors.white,
         paddingTop: mvs(15),
         borderTopRightRadius: mvs(20),
@@ -95,7 +86,6 @@ const styles = StyleSheet.create({
         marginBottom: mvs(20),
         flexDirection: 'row',
         justifyContent: 'space-between',
-        borderBottomWidth: 0.7,
     },
     cross: { padding: mvs(20), alignSelf: 'flex-end', position: 'absolute' },
 });

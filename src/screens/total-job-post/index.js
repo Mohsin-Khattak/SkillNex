@@ -214,7 +214,8 @@ const TotalJobPost = props => {
           data={data}
           keyExtractor={item => item.id}
           renderItem={({item, index}) => (
-            <View
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate('JobPostScreen')}
               style={[
                 styles.tableRow,
                 {backgroundColor: index % 2 == 0 ? colors.white : colors.gray},
@@ -223,7 +224,7 @@ const TotalJobPost = props => {
               <Text style={styles.tableCell}>{item.date}</Text>
               <Text style={styles.tableCell}>{item.field}</Text>
               <Text style={styles.tableCell}>{item.status}</Text>
-            </View>
+            </TouchableOpacity>
           )}
         />
       </View>

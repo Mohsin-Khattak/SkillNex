@@ -6,7 +6,7 @@ import { navigationRef } from '../../../navigation/navigation-ref'
 export const BackCircle = () => {
     return (
         <TouchableOpacity style={styles.container} onPress={() => navigationRef.goBack()}>
-            <Icon name={'chevron-left'} size={25} color={colors.black}/>
+            <Icon name={'chevron-left'} style={styles.backIcon} size={30} color={colors.black}/>
         </TouchableOpacity>
     )
 }
@@ -18,5 +18,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         backgroundColor:colors.cF2F2F2
+    },
+    backIcon: {
+        transform: [{translateY: -3}]
     }
 })

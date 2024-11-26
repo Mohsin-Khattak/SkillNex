@@ -17,20 +17,21 @@ import PrimaryButton from '../../components/carts/button';
 import {colors} from '../../config/colors';
 import styles from './styles';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import { goBack } from '../../navigation/navigation-ref';
+import {goBack} from '../../navigation/navigation-ref';
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
-  fieldOfStudy: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  fieldOfStudy: Yup.string().required('Study field is required'),
   yearsOfExperience: Yup.number()
     .typeError('Must be a number')
     .positive('Must be positive')
-    .required('Required'),
-  linkedinProfile: Yup.string().url('Invalid URL').required('Required'),
+    .required('Experience is required'),
+  linkedinProfile: Yup.string().url('Invalid URL').required('Link is required'),
 });
 
-const RecruiterProfile = () => {
+const RecruiterProfile = props => {
   const [fileName, setFileName] = useState('');
+  const [editable, setEditable] = useState(false);
 
   const handleFileUpload = () => {
     pick({
@@ -38,18 +39,10 @@ const RecruiterProfile = () => {
       type: [types.pdf, types.docx],
     })
       .then(res => {
-        const allFilesArePdfOrDocx = res?.every(file => file.hasRequestedType);
-
-        if (!allFilesArePdfOrDocx) {
-          Alert.alert(
-            'Invalid File Type',
-            'Please select only PDF or DOCX files.',
-          );
-          return;
+        if (res.length > 0) {
+          console.log('Selected files:', res);
+          setFileName(res[0].name || '');
         }
-
-        console.log('Selected files:', res);
-        addResult(res);
       })
       .catch(err => {
         if (err && err.message === 'User canceled the picker') {
@@ -80,6 +73,7 @@ const RecruiterProfile = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={values => {
+          console.log('Form Values:', values);
           goBack();
         }}>
         {({
@@ -96,7 +90,9 @@ const RecruiterProfile = () => {
             <View style={styles.contentContainer}>
               <View style={styles.headerRow}>
                 <Text style={styles.title}>Profile</Text>
-                <TouchableOpacity style={styles.editButton}>
+                <TouchableOpacity
+                  onPress={() => setEditable(f => !f)}
+                  style={styles.editButton}>
                   <Text style={styles.editButtonText}>Edit</Text>
                 </TouchableOpacity>
               </View>
@@ -126,6 +122,7 @@ const RecruiterProfile = () => {
                 <View key={index} style={styles.inputContainer}>
                   <Text style={styles.label}>{item.label}</Text>
                   <TextInput
+                    editable={editable}
                     style={styles.input}
                     placeholder={item.placeholder}
                     placeholderTextColor={colors.grey}
@@ -142,17 +139,17 @@ const RecruiterProfile = () => {
               <View style={styles.inputContainer}>
                 <Text style={styles.label}>Portfolio Samples</Text>
                 <TouchableOpacity
+                  disabled={!editable}
                   style={styles.uploadContainer}
                   onPress={handleFileUpload}>
                   <UploadIconSvg />
                   <Text style={styles.uploadText}>
-                    {fileName || 'Drag and drop file here or '}
-                    <Text style={styles.browseText}>browse file</Text>
+                    {fileName || 'Browse file'}
                   </Text>
                 </TouchableOpacity>
               </View>
               <PrimaryButton
-                onPress={handleSubmit}
+                onclick={handleSubmit}
                 label="Submit"
                 style={styles.submitButton}
                 textStyle={styles.submitButtonText}

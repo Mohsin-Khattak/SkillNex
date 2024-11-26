@@ -14,7 +14,6 @@ import {navigate} from '../../navigation/navigation-ref';
 
 const JobSubmission = () => {
   const [fileName, setFileName] = useState('');
-  console.log('test logs');
 
   const handleFileUpload = () => {
     pick({
@@ -22,18 +21,19 @@ const JobSubmission = () => {
       type: [types.pdf, types.docx],
     })
       .then(res => {
-        const allFilesArePdfOrDocx = res?.every(file => file.hasRequestedType);
+        // const allFilesArePdfOrDocx = res?.every(file => file.hasRequestedType);
 
-        if (!allFilesArePdfOrDocx) {
-          Alert.alert(
-            'Invalid File Type',
-            'Please select only PDF or DOCX files.',
-          );
-          return;
+        // if (!allFilesArePdfOrDocx) {
+        //   Alert.alert(
+        //     'Invalid File Type',
+        //     'Please select only PDF or DOCX files.',
+        //   );
+        //   return;
+        // }
+        if (res.length > 0) {
+          console.log('Selected files:', res);
+          setFileName(res[0].name || '');
         }
-
-        console.log('Selected files:', res);
-        addResult(res);
       })
       .catch(err => {
         if (err && err.message === 'User canceled the picker') {
@@ -75,7 +75,7 @@ const JobSubmission = () => {
   });
   const languages = [
     {id: '1', title: 'English'},
-    {id: '1', title: 'Urdu'},
+    {id: '2', title: 'Urdu'},
   ];
   const [language, setLanguage] = useState({
     value: '',
@@ -108,6 +108,7 @@ const JobSubmission = () => {
               label="Interview Type"
               placeholder="Interview Type"
               items={interviewTypes}
+              id={interviewType.value}
               value={
                 interviewTypes.find(x => x.id == interviewType.value)?.title
               }
@@ -157,6 +158,7 @@ const JobSubmission = () => {
             </View>
 
             <DropdownInput
+              id={language.value}
               onBlur={() => {
                 setLanguage({...language, blur: true});
               }}
@@ -177,8 +179,7 @@ const JobSubmission = () => {
                 onPress={handleFileUpload}>
                 <UploadIconSvg />
                 <Text style={styles.uploadText}>
-                  {fileName || 'Drag and drop file here or '}
-                  <Text style={styles.browseText}>browse file</Text>
+                  {fileName || 'Browse file'}
                 </Text>
               </TouchableOpacity>
             </View>

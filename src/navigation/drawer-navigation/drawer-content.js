@@ -20,32 +20,32 @@ const CustomDrawerContent = props => {
         <DrawerItem
           icon="person-outline"
           label="Edit Profile"
-          onPress={() => props.navigation.navigate('Edit Profile')}
+          onPress={() => props.navigation.navigate('CandidateEditProfile')}
         />
         <DrawerItem
           icon="calendar-outline"
           label="Practice Interview"
-          onPress={() => props.navigation.navigate('Practice Interview')}
+          onPress={() => props.navigation.navigate('CandidateDashboard')}
         />
         <DrawerItem
           icon="briefcase-outline"
           label="Job Board"
-          onPress={() => props.navigation.navigate('Job Board')}
+          onPress={() => props.navigation.navigate('CandidateJobBoard')}
         />
         <DrawerItem
           icon="bar-chart-outline"
           label="Feedback and Reports"
-          onPress={() => props.navigation.navigate('Feedback and Reports')}
+          onPress={() => props.navigation.navigate('FeedbackReportCandidate')}
         />
         <DrawerItem
           icon="notifications-outline"
           label="Notifications"
-          onPress={() => props.navigation.navigate('Notifications')}
+          // onPress={() => props.navigation.navigate('Notifications')}
         />
         <DrawerItem
           icon="help-circle-outline"
           label="Support"
-          onPress={() => props.navigation.navigate('Support')}
+          // onPress={() => props.navigation.navigate('Support')}
         />
       </View>
     </View>

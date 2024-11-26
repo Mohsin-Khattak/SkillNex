@@ -35,7 +35,9 @@ const SelectUserType = ({navigation}) => {
         textStyle={styles.candidateTxt}
       />
       <PrimaryButton
-        onclick={() => navigation.navigate('SignUpOrLogin')}
+        onclick={() =>
+          navigation.navigate('SignUpOrLogin', {userType: 'recruiter'})
+        }
         label="Recruiter"
         height={56}
         style={styles.recruiterBtn}

@@ -1,15 +1,14 @@
-import React, {useState} from 'react';
-import {Image, Platform, TouchableOpacity, View} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import PrimaryButton from '../../../components/carts/button';
-import {colors} from '../../../config/colors';
+import React, { useState } from 'react';
+import { Image, Platform, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StartTime } from '../../../assets/images';
 import BackHeader from '../../../components/atoms/headers/back-header';
-import styles from './styles';
-import SemiBold from '../../../typography/semi-bold-text';
-import {mvs} from '../../../config/metrices';
-import Regular from '../../../typography/regular-text';
-import {StartTime} from '../../../assets/images';
+import PrimaryButton from '../../../components/carts/button';
+import { colors } from '../../../config/colors';
 import { navigate } from '../../../navigation/navigation-ref';
+import Regular from '../../../typography/regular-text';
+import SemiBold from '../../../typography/semi-bold-text';
+import styles from './styles';
 
 const CandidateDashboard = props => {
   const insets = useSafeAreaInsets();
@@ -23,7 +22,7 @@ const CandidateDashboard = props => {
           backgroundColor: colors.primary,
         }}
       />
-      <BackHeader name="Sadruddin" date="Today   Jan 27" />
+      <BackHeader disabled={false} onPressProfile={()=>props?.navigation?.toggleDrawer()} name="Sadruddin" date="Today   Jan 27" />
       <View style={styles.btnContainer}>
         <PrimaryButton
           onclick={() => setFlag('Practice')}

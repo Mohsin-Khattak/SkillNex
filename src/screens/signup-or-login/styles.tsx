@@ -7,8 +7,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     paddingHorizontal: mvs(20),
-    alignItems: 'center',
+  },
+  body:{
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   descTxt: {
     textAlign: 'justify',

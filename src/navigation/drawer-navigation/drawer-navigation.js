@@ -11,7 +11,7 @@ const DrawerNavigation = () => {
     <Drawer.Navigator
       screenOptions={{
         headerShown: false,
-        drawerType: 'back',
+        // drawerType: 'back',
         drawerStyle: {width: 300},
         overlayColor: 'transparent',
       }}

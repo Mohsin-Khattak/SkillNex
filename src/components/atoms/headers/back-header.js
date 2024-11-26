@@ -7,7 +7,7 @@ import {mvs} from '../../../config/metrices';
 import {Row} from '../row';
 import {useNavigation} from '@react-navigation/native';
 
-const BackHeader = ({name = 'abid', date = 'Today Jan 27', back = true}) => {
+const BackHeader = ({name = 'abid', date = 'Today Jan 27',onPressProfile=()=>{},disabled=true, back = true}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -17,10 +17,13 @@ const BackHeader = ({name = 'abid', date = 'Today Jan 27', back = true}) => {
             <BackIconSvg />
           </TouchableOpacity>
         )}
-        <View style={styles.userInfo}>
+        <TouchableOpacity
+          disabled={disabled}
+          onPress={onPressProfile}
+          style={styles.userInfo}>
           <Image source={Profile} style={styles.profilePic} />
           <Text style={styles.userName}>{name}</Text>
-        </View>
+        </TouchableOpacity>
       </Row>
       <View style={styles.dateView}>
         <Text style={styles.date}>{date}</Text>

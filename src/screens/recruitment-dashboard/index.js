@@ -12,6 +12,7 @@ import PrimaryButton from '../../components/carts/button';
 import styles from './styles';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {colors} from '../../config/colors';
+import { navigate } from '../../navigation/navigation-ref';
 
 const RecruitmentDashboard = ({navigation}) => {
   const insets = useSafeAreaInsets();
@@ -29,7 +30,13 @@ const RecruitmentDashboard = ({navigation}) => {
           backgroundColor: colors.primary,
         }}
       />
-      <BackHeader back={false} name="Sadruddin" date="Today   Jan 27" />
+      <BackHeader
+        disabled={false}
+        onPressProfile={() => navigate('RecruiterProfile')}
+        back={false}
+        name="Sadruddin"
+        date="Today   Jan 27"
+      />
 
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.greetingText}>Hi Sadruddin co.</Text>

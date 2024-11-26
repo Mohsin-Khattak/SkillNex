@@ -208,7 +208,8 @@ const PrescreeningCandidates = props => {
           data={data}
           keyExtractor={item => item.id}
           renderItem={({item, index}) => (
-            <View
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate('JobBoard')}
               style={[
                 styles.tableRow,
                 {backgroundColor: index % 2 == 0 ? colors.white : colors.gray},
@@ -218,7 +219,7 @@ const PrescreeningCandidates = props => {
               <Text style={styles.tableCell}>{item.name}</Text>
               <Text style={styles.tableCell}>{item.field}</Text>
               <Text style={styles.tableCell}>{item.status}</Text>
-            </View>
+            </TouchableOpacity>
           )}
         />
       </View>
