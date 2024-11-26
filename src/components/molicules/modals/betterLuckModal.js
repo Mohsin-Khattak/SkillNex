@@ -40,8 +40,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     backgroundColor: '#F5F9FF',
-    // top: mvs(150),
-    // left: '40%',
   },
   lottie: {
     height: mvs(40),
