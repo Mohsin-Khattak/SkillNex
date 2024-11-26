@@ -1,22 +1,21 @@
-import {Formik} from 'formik';
-import React, {useState} from 'react';
+import { Formik } from 'formik';
+import React, { useState } from 'react';
 import {
-  Alert,
   Platform,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import {pick, types} from 'react-native-document-picker';
+import { pick, types } from 'react-native-document-picker';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
-import {UploadIconSvg} from '../../../assets/icons/user';
+import { UploadIconSvg } from '../../../assets/icons/user';
 import BackHeader from '../../../components/atoms/headers/back-header';
-import {KeyboardAvoidScrollview} from '../../../components/atoms/keyboard-avoid-scrollview';
+import { KeyboardAvoidScrollview } from '../../../components/atoms/keyboard-avoid-scrollview';
 import PrimaryButton from '../../../components/carts/button';
-import {colors} from '../../../config/colors';
+import { colors } from '../../../config/colors';
 import styles from './styles';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const validationSchema = Yup.object().shape({
   education: Yup.string().required('Education is required'),
