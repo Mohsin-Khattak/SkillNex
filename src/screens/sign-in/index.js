@@ -1,7 +1,7 @@
-import { Formik } from 'formik';
+import {Formik} from 'formik';
 import React from 'react';
-import { Platform, TouchableOpacity, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {Platform, TouchableOpacity, View} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 import {
   CurrentJobIconSvg,
@@ -10,11 +10,11 @@ import {
   NameIconSvg,
   OpenEyeIconSvg,
 } from '../../assets/icons/user';
-import { KeyboardAvoidScrollview } from '../../components/atoms/keyboard-avoid-scrollview';
+import {KeyboardAvoidScrollview} from '../../components/atoms/keyboard-avoid-scrollview';
 import PrimaryButton from '../../components/carts/button';
 import CustomTextInput from '../../components/carts/customTextInput';
-import { LinkedInCard } from '../../components/molicules/linkedin-card';
-import { navigate } from '../../navigation/navigation-ref';
+import {LinkedInCard} from '../../components/molicules/linkedin-card';
+import {navigate} from '../../navigation/navigation-ref';
 import Bold from '../../typography/bold-text';
 import Regular from '../../typography/regular-text';
 import styles from './styles';
@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignIn = props => {
-    const isCandidate = props.route?.params?.userType === 'candidate';
+  const isCandidate = props.route?.params?.userType === 'candidate';
 
   console.log('isCandidate', isCandidate);
 

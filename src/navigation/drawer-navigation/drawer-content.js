@@ -1,14 +1,30 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import BackIconSvg from '../../assets/icons/user/back-icon-svg';
 import {Profile} from '../../assets/images';
 import {Row} from '../../components/atoms/row';
 import {colors} from '../../config/colors';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const CustomDrawerContent = props => {
+  const insets = useSafeAreaInsets();
+
   return (
     <View style={styles.drawerContainer}>
+      <View
+        style={{
+          paddingTop: Platform.OS === 'ios' ? insets.top : 0,
+          backgroundColor: colors.primary,
+        }}
+      />
       <Row style={styles.profileContainer}>
         <TouchableOpacity onPress={() => props.navigation.goBack()}>
           <BackIconSvg />
@@ -65,7 +81,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   profileContainer: {
-    padding: 20,
+    // padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 6,
     alignItems: 'center',
     backgroundColor: colors.primary,
     justifyContent: 'flex-start',
